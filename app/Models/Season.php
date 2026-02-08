@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TvShow;
 use App\Models\Episode;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Season extends Model
 {

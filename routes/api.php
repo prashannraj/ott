@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\LiveController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\SubscriptionPlanController;
+use App\Http\Controllers\Api\AnalyticsController;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -38,4 +39,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('plans', [SubscriptionPlanController::class, 'index']);
     Route::post('subscriptions', [SubscriptionController::class, 'store']); // create subscription (after payment)
     Route::get('subscriptions/me', [SubscriptionController::class, 'me']);
+
+    // Analytics
+    Route::post('analytics/play', [AnalyticsController::class, 'logPlay']);
+
 });

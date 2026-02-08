@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SubscriptionPlan;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Subscription extends Model

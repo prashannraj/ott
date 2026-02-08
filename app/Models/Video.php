@@ -10,6 +10,7 @@ use App\Models\Genre;
 use App\Models\Category;
 use App\Models\VideoFile;
 use App\Models\Subtitle;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Video extends Model
@@ -57,5 +58,15 @@ class Video extends Model
     public function subtitles()
     {
         return $this->hasMany(Subtitle::class);
+    }
+
+        public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->ratings()->avg('rating');
     }
 }
