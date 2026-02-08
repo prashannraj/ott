@@ -6,6 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Profile;
+use App\Models\Subscription;
+use App\Models\Rental;
+use App\Models\Watchlist;
 
 class User extends Authenticatable
 {
