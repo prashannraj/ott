@@ -43,4 +43,5 @@ Route::middleware('auth:sanctum')->group(function () {
     // Analytics
     Route::post('analytics/play', [AnalyticsController::class, 'logPlay']);
 
+
 });

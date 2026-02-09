@@ -6,24 +6,33 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('rentals', function (Blueprint $table) {
-           $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('video_id')->constrained()->onDelete('cascade');
-            $table->foreignId('order_id')->nullable()->constrained()->onDelete('set null');
-            $table->timestamp('expires_at');
+            $table->id();
+
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
+
+            $table->foreignId('video_id')
+                ->constrained('videos')
+                ->onDelete('cascade');
+
+            $table->foreignId('order_id')
+                ->nullable()
+                ->constrained('orders')
+                ->nullOnDelete(); // वा ->onDelete('set null');
+
+            // महत्त्वपूर्ण: nullable बनाउनुहोस्
+            $table->timestamp('expires_at')->nullable();
+
             $table->timestamps();
+
+            $table->unique(['user_id', 'video_id']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('rentals');
