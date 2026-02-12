@@ -17,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
 
 class FilesRelationManager extends RelationManager
 {
@@ -40,11 +41,13 @@ class FilesRelationManager extends RelationManager
                     'hls' => 'HLS (.m3u8)',
                     'mp4' => 'MP4',
                 ])
-                ->default('hls')
+                ->default('mp4')
                 ->required(),
                 FileUpload::make('path')
-                ->label('File (or HLS manifest)')
-                ->directory('videos')
+                ->label('File (or MP4 manifest)')
+                 ->disk('public')
+                ->directory('videos')         // storage/app/public/videos
+                ->acceptedFileTypes(['video/mp4'])
                 ->required(),
                 TextInput::make('size_bytes')
                 ->numeric()

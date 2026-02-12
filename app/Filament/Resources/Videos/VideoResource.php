@@ -7,6 +7,8 @@ use App\Filament\Resources\Videos\Pages\EditVideo;
 use App\Filament\Resources\Videos\Pages\ListVideos;
 use App\Filament\Resources\Videos\Schemas\VideoForm;
 use App\Filament\Resources\Videos\Tables\VideosTable;
+use App\Filament\Resources\Videos\RelationManagers\FilesRelationManager;
+use App\Filament\Resources\Videos\RelationManagers\SubtitlesRelationManager;
 use App\Models\Video;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -37,6 +39,8 @@ class VideoResource extends Resource
     {
         return [
             //
+            FilesRelationManager::class,
+            SubtitlesRelationManager::class,
         ];
     }
 

@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Columns\ImageColumn;
 
 class VideosTable
 {
@@ -29,11 +30,11 @@ class VideosTable
                 TextColumn::make('duration_sec')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('poster_path')
+                ImageColumn::make('poster_path')
                     ->searchable(),
-                TextColumn::make('thumbnail_path')
+                ImageColumn::make('thumbnail_path')
                     ->searchable(),
-                TextColumn::make('banner_path')
+                ImageColumn::make('banner_path')
                     ->searchable(),
                 TextColumn::make('seo_title')
                     ->searchable(),
