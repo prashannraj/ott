@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use app\Models\Video;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Movie extends Model
