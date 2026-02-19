@@ -31,11 +31,23 @@ class VideosTable
                     ->numeric()
                     ->sortable(),
                 ImageColumn::make('poster_path')
-                    ->searchable(),
+                    ->label('Poster')
+                    ->circular()
+                    ->size(60)
+                    ->url(fn ($record) => $record->poster_url)
+                    ->openUrlInNewTab(),
                 ImageColumn::make('thumbnail_path')
-                    ->searchable(),
+                    ->label('Thumbnail')
+                    ->circular()
+                    ->size(60)
+                    ->url(fn ($record) => $record->banner_url)
+                    ->openUrlInNewTab(),
                 ImageColumn::make('banner_path')
-                    ->searchable(),
+                    ->label('Banner')
+                    ->circular()
+                    ->size(60)
+                    ->url(fn ($record) => $record->thumbnail_url)
+                    ->openUrlInNewTab(),
                 TextColumn::make('seo_title')
                     ->searchable(),
                 TextColumn::make('seo_keywords')

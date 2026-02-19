@@ -39,19 +39,44 @@ class VideoForm
                     ->label('Duration (seconds)'),
                 FileUpload::make('poster_path')
                     ->label('Poster')
+                    ->maxParallelUploads(1)
                     ->directory('posters')
                     ->image()
-                    ->imageEditor(),
+                    ->imageEditor()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->required()
+                    ->imagePreviewHeight(300)
+                    ->helperText('सिफारिस: 600×900 px, JPG/PNG/WebP'),
                 FileUpload::make('thumbnail_path')
                     ->label('Thumbnail')
+                    ->maxParallelUploads(1)
                     ->directory('thumbnails')
                     ->image()
-                    ->imageEditor(),
+                    ->imageEditor()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->directory('thumbnails')
+                    ->imagePreviewHeight(150)
+                    ->helperText('Video preview को लागि, 1280×720 सिफारिस'),
                 FileUpload::make('banner_path')
-                     ->label('Banner')
+                    ->label('Banner')
+                    ->maxParallelUploads(1)
                     ->directory('banners')
                     ->image()
-                    ->imageEditor(),
+                    ->imageEditor()
+                    ->imageCropAspectRatio('16:9')
+                    ->imageResizeTargetWidth(1920)
+                    ->imageResizeTargetHeight(1080)
+                    ->disk('public')
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->directory('banners')
+                    ->required()
+                    ->imagePreviewHeight(200)
+                    ->helperText('सिफारिस: 1920×1080 px, wide banner'),
                 TextInput::make('seo_title')
                     ->default(null),
                 Textarea::make('seo_description')
