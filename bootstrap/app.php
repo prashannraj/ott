@@ -12,17 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
-
-        // Web middleware group
-        $middleware->web(append: [
-            //
-        ]);
-
         // API middleware group
         $middleware->api(prepend: [
-            // Pure token-based API is better for decoupled Next.js
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
         ]);
 
         // Middleware aliases
