@@ -120,6 +120,8 @@ class VideoController extends Controller
                     return [
                         'id' => $file->id,
                         'url' => asset('storage/' . $file->path),
+                        'path' => $file->path,
+                        'format' => $file->format ?? null,
                         'type' => $file->type ?? 'video/mp4',
                         'quality' => $file->quality ?? 'HD',
                     ];
@@ -227,7 +229,10 @@ class VideoController extends Controller
                     'duration' => $video->duration ?? 'N/A',
                     'files' => $video->files->map(function ($file) {
                         return [
+                            'id' => $file->id,
                             'url' => asset('storage/' . $file->path),
+                            'path' => $file->path,
+                            'format' => $file->format ?? null,
                             'type' => $file->type ?? 'video/mp4',
                             'quality' => $file->quality ?? 'HD',
                         ];
