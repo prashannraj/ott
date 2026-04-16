@@ -97,7 +97,7 @@ class MovieController extends Controller
         $perPage = $request->input('per_page', 20);
 
         $videos = Video::where('type', 'movie')
-            ->with(['movie', 'files'])
+            ->with(['movie', 'files', 'genres'])
             ->latest()
             ->paginate($perPage);
 
@@ -122,6 +122,8 @@ class MovieController extends Controller
                 'duration' => $video->duration_sec ?? 'N/A',
                 'rating' => $video->rating ?? 'N/A',
                 'year' => $video->release_date ? $video->release_date->year : 'N/A',
+                'release_date' => $video->release_date ? $video->release_date->format('Y-m-d') : null,
+                'genres' => $video->genres->pluck('name')->values(),
                 'is_premium' => $video->movie ? $video->movie->is_premium : false,
             ];
         });
