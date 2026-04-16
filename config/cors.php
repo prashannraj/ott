@@ -19,11 +19,17 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000',
+    'allowed_origins' => array_values(array_filter([
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
         env('FRONTEND_URL'),
-        env('FRONTEND_URL2')],
+        env('FRONTEND_URL2'),
+        env('FRONTEND_URL3'),
+    ])),
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [
+        '#^https://[a-z0-9-]+\.vercel\.app$#i',
+    ],
 
     'allowed_headers' => ['*'],
 
