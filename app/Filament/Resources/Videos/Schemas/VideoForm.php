@@ -92,7 +92,7 @@ class VideoForm
                         'application/x-mpegURL',
                         'video/MP2T'
                     ])
-                    ->maxSize(5000), // MB
+                    ->maxSize(4194304), // 4GB (value is in KB)
                 TextInput::make('seo_title')
                     ->default(null),
                 Textarea::make('seo_description')

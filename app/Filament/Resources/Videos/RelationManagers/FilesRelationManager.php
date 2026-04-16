@@ -60,7 +60,7 @@ class FilesRelationManager extends RelationManager
                     'application/x-mpegURL',
                     'video/MP2T'
                 ])
-                ->maxSize(2097152) // 2GB
+                ->maxSize(4194304) // 4GB
                 ->required(),
                 TextInput::make('size_bytes')
                 ->numeric()
